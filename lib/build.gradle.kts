@@ -22,7 +22,7 @@ android {
             res.srcDirs(*srcDirs)
         }
     }
-    (project.extraProperties()["resourcePrefix"] as String?)?.let {
+    project.getStringExtra("lib.resourcePrefix")?.let {
         resourcePrefix(it)
     }
     compileOptions {
@@ -31,20 +31,20 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-        moduleName = "dev.ebnbin.${project.extraProperties().getValue("libId") as String}"
+        moduleName = "dev.ebnbin.${project.requireStringExtra("lib.id")}"
     }
     buildFeatures {
-        viewBinding = (project.extraProperties().getOrDefault("viewBinding", "false") as String).toBoolean()
-        dataBinding = (project.extraProperties().getOrDefault("dataBinding", "false") as String).toBoolean()
+        viewBinding = project.getStringExtra("lib.viewBinding")?.toBoolean() ?: false
+        dataBinding = project.getStringExtra("lib.dataBinding")?.toBoolean() ?: false
     }
 }
 
 afterEvaluate {
     publishing {
         publications {
-            val publish = project.extraProperties().getOrDefault("publish", "release") as String
-            create<MavenPublication>(publish) {
-                from(components[publish])
+            val publication = project.getStringExtraOrDefault("lib.publication", "release")
+            create<MavenPublication>(publication) {
+                from(components[publication])
             }
         }
     }

@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.ebnbin:gradle-build:0.0.23")
+    implementation("com.github.dev-ebnbin:gradle-build:0.0.26")
 }

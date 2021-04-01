@@ -3,10 +3,10 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
     maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("com.github.dev-ebnbin:gradle-build:0.0.26")
+    implementation("com.github.dev-ebnbin:gradle-build:0.0.31")
 }

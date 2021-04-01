@@ -53,7 +53,7 @@ afterEvaluate {
 //*********************************************************************************************************************
 
 dependencies {
-    debugApi(Dependencies.comGithubEbnbin_ebui.devNotation(project))
+    debugApi(Dependencies.comGithubDevEbnbin_ebui.devNotation(project))
 
     debugImplementation(Dependencies.comSquareupLeakcanary_leakcanaryAndroid.notation())
     debugImplementation(Dependencies.catEreza_customactivityoncrash.notation())

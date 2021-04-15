@@ -36,10 +36,6 @@ android {
     buildFeatures {
         viewBinding = project.getStringExtra("lib.viewBinding")?.toBoolean() ?: false
         dataBinding = project.getStringExtra("lib.dataBinding")?.toBoolean() ?: false
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
     }
 }
 

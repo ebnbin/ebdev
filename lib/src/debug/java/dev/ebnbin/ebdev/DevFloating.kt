@@ -72,8 +72,8 @@ internal object DevFloating : Application.ActivityLifecycleCallbacks, DevFloatin
 
     fun update(activity: Activity, x: Int, y: Int) {
         if (!checkEnabled(activity)) return
-        EBDevPrefs.dev_floating_x.value = x
-        EBDevPrefs.dev_floating_y.value = y
+        EBDevPrefs.devFloatingX.value = x
+        EBDevPrefs.devFloatingY.value = y
         activity.window.decorView.post {
             internalUpdate(activity, x, y)
         }
@@ -96,8 +96,8 @@ internal object DevFloating : Application.ActivityLifecycleCallbacks, DevFloatin
             it.width = ViewGroup.LayoutParams.WRAP_CONTENT
             it.height = ViewGroup.LayoutParams.WRAP_CONTENT
             it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            val x = EBDevPrefs.dev_floating_x.value
-            val y = EBDevPrefs.dev_floating_y.value
+            val x = EBDevPrefs.devFloatingX.value
+            val y = EBDevPrefs.devFloatingY.value
             it.showAtLocation(activity.window.decorView, Gravity.NO_GRAVITY, x, y)
         }
         activity.window.decorView.setTag(TAG_POPUP_WINDOW, popupWindow)
@@ -127,7 +127,7 @@ internal object DevFloating : Application.ActivityLifecycleCallbacks, DevFloatin
     }
 
     override fun onLongPress(view: View): Boolean {
-        EBUIPrefs.night_mode.value = when (EBUIPrefs.night_mode.value) {
+        EBUIPrefs.nightMode.value = when (EBUIPrefs.nightMode.value) {
             AppCompatDelegate.MODE_NIGHT_YES -> AppCompatDelegate.MODE_NIGHT_NO
             else -> AppCompatDelegate.MODE_NIGHT_YES
         }

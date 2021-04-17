@@ -74,16 +74,16 @@ internal class DevEBPageFragment : PreferenceFragmentCompat() {
 
         Preference(requireContext()).also {
             fun summary(
-                floatingX: Int = EBDevPrefs.dev_floating_x.value,
-                floatingY: Int = EBDevPrefs.dev_floating_y.value,
+                floatingX: Int = EBDevPrefs.devFloatingX.value,
+                floatingY: Int = EBDevPrefs.devFloatingY.value,
             ): CharSequence {
                 return "$floatingX,$floatingY"
             }
 
-            EBDevPrefs.dev_floating_x.observe(viewLifecycleOwner) { value ->
+            EBDevPrefs.devFloatingX.observe(viewLifecycleOwner) { value ->
                 it.summary = summary(floatingX = value)
             }
-            EBDevPrefs.dev_floating_y.observe(viewLifecycleOwner) { value ->
+            EBDevPrefs.devFloatingY.observe(viewLifecycleOwner) { value ->
                 it.summary = summary(floatingY = value)
             }
             it.title = "Dev 悬浮窗位置（像素）"
@@ -114,8 +114,8 @@ internal class DevEBPageFragment : PreferenceFragmentCompat() {
 
         ListPreference(requireContext()).also {
             it.isPersistent = false
-            it.key = EBUIPrefs.night_mode.key
-            it.value = EBUIPrefs.night_mode.value.toString()
+            it.key = EBUIPrefs.nightMode.key
+            it.value = EBUIPrefs.nightMode.value.toString()
             it.title = "Night Mode"
             val nightModeMap = mapOf(
                 AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM to "MODE_NIGHT_FOLLOW_SYSTEM",
@@ -136,7 +136,7 @@ internal class DevEBPageFragment : PreferenceFragmentCompat() {
             it.dialogTitle = it.title
             it.setOnPreferenceChangeListener { _, newValue ->
                 newValue as String
-                EBUIPrefs.night_mode.value = newValue.toInt()
+                EBUIPrefs.nightMode.value = newValue.toInt()
                 true
             }
             preferenceScreen.addPreference(it)

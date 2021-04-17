@@ -44,7 +44,7 @@ internal class DevFragment : Fragment() {
         onPageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                EBDevPrefs.dev_page.value = position
+                EBDevPrefs.devPage.value = position
             }
         }
         binding.ebdevViewPager.registerOnPageChangeCallback(onPageChangeCallback)
@@ -52,7 +52,7 @@ internal class DevFragment : Fragment() {
             tab.text = devPageList[position].title
         }.attach()
         if (savedInstanceState == null) {
-            binding.ebdevViewPager.setCurrentItem(EBDevPrefs.dev_page.value, false)
+            binding.ebdevViewPager.setCurrentItem(EBDevPrefs.devPage.value, false)
         }
     }
 
